@@ -1,9 +1,12 @@
-import React from 'react';
-import * as C from './classes';
+import React from "react";
+import * as C from "./classes";
 
 function App() {
   const [currentClass, setCurrentClass] = React.useState();
-  const possibleClass = { useEffect: <C.UseEffect /> };
+  const possibleClass = {
+    useEffect: <C.UseEffect />,
+    useContext: <C.UseContext />,
+  };
 
   return (
     <div className="App">
