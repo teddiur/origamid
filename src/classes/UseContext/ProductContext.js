@@ -15,6 +15,8 @@ export const ProductProvider = ({ children }) => {
       .then((json) => setData(json));
   };
 
+  React.useEffect(() => fetchData(), []);
+
   const value = {
     cleanData,
     fetchData,
