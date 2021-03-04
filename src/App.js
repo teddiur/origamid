@@ -7,6 +7,7 @@ function App() {
     useEffect: <C.UseEffect />,
     useContext: <C.UseContext />,
     Input: <C.Input />,
+    "Desáfio Form": <C.DesafioForm />,
   };
 
   return (
