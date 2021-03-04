@@ -6,6 +6,7 @@ function App() {
   const possibleClass = {
     useEffect: <C.UseEffect />,
     useContext: <C.UseContext />,
+    Input: <C.Input />,
   };
 
   return (
