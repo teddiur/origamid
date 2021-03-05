@@ -18,11 +18,13 @@ export const Pergunta = ({ data, setPagina, setRespostas }) => {
 
       <button
         onClick={() => {
-          setPagina((pagina) => pagina + 1);
-          setRespostas((prev) => {
-            return { ...prev, [id]: value };
-          });
-          setValue("");
+          if (value) {
+            setPagina((pagina) => pagina + 1);
+            setRespostas((prev) => {
+              return { ...prev, [id]: value };
+            });
+            setValue("");
+          }
         }}
       >
         Próxima

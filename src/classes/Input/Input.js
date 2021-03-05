@@ -39,7 +39,6 @@ export const Input = () => {
           body: JSON.stringify(form),
         }
       );
-      console.log(response);
       if (response.status !== 200)
         setShowSucess({ status: true, message: "error" });
       else setShowSucess({ status: true, message: "sucess" });

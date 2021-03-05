@@ -40,12 +40,26 @@ export const DesafioForm = () => {
   const [pagina, setPagina] = React.useState(0);
   const [respostas, setRespostas] = React.useState({});
 
+  function calculateRightAnswers() {
+    const resultado = perguntas.reduce((acc, cur) => {
+      const { id } = cur;
+      const resposta = respostas[id];
+      if (resposta === cur.resposta) {
+        return acc + 1;
+      } else return acc;
+    }, 0);
+    return resultado;
+  }
+
   return (
     <>
       {pagina === perguntas.length ? (
-        <p>Você acertou x/x</p>
+        <p>
+          Você acertou {calculateRightAnswers()}/{perguntas.length}
+        </p>
       ) : (
         <Pergunta
+          key={perguntas[pagina].id}
           data={perguntas[pagina]}
           setPagina={setPagina}
           setRespostas={setRespostas}
