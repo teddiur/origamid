@@ -9,24 +9,23 @@ export const Pergunta = ({ data, setPagina, setRespostas }) => {
     setValue(target.value);
   }
 
+  function handleClick({ target }) {
+    if (value) {
+      setPagina((pagina) => pagina + 1);
+      setRespostas((prev) => {
+        return { ...prev, [id]: value };
+      });
+      setValue("");
+    }
+  }
+
   return (
     <>
       <fieldset>
         <legend>{pergunta}</legend>
         <Radio id={id} options={options} onChange={onChange} />
       </fieldset>
-
-      <button
-        onClick={() => {
-          if (value) {
-            setPagina((pagina) => pagina + 1);
-            setRespostas((prev) => {
-              return { ...prev, [id]: value };
-            });
-            setValue("");
-          }
-        }}
-      >
+      <button disabled={!value} onClick={handleClick}>
         Próxima
       </button>
     </>

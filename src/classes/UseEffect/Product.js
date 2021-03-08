@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const Product = ({ product }) => {
   const [data, setData] = React.useState(null);
@@ -9,7 +9,7 @@ export const Product = ({ product }) => {
       .then((response) => response.json())
       .then((json) => {
         setData(json);
-        window.localStorage.setItem('produto', product);
+        window.localStorage.setItem("produto", product);
       });
 
     return () => {
@@ -22,7 +22,7 @@ export const Product = ({ product }) => {
         <>
           <p>{data.nome}</p>
           <p>R$ {data.preco}</p>
-          {data.fotos.map((foto) => (
+          {data.fotos?.map((foto) => (
             <img key={foto.titulo} src={foto.src} alt={foto.titulo} />
           ))}
         </>

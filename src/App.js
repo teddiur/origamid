@@ -1,37 +1,52 @@
 import React from "react";
 import * as C from "./classes";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Home } from "./Home";
+import { Return } from "./Return";
 
 function App() {
-  const [currentClass, setCurrentClass] = React.useState();
-  const possibleClass = {
-    useEffect: <C.UseEffect />,
-    useContext: <C.UseContext />,
-    Input: <C.Input />,
-    "Desáfio Form": <C.DesafioForm />,
-  };
+  const [currentClass, setCurrentClass] = React.useState("");
+
+  const desafiosRoutes = [
+    {
+      label: "Desafio Form",
+      path: "form",
+      element: <C.DesafioForm />,
+    },
+    {
+      label: "Desafio Router 1",
+      path: "router1/*",
+      element: <C.Router1 />,
+    },
+  ];
+
+  function returnToHome() {
+    setCurrentClass("");
+  }
 
   return (
-    <div className="App">
-      <button
-        onClick={() => {
-          setCurrentClass(null);
-        }}
-      >
-        Voltar
-      </button>
+    <BrowserRouter>
+      <Return currentClass={currentClass} returnToHome={returnToHome} />
+
       <hr />
-      {currentClass
-        ? possibleClass[currentClass]
-        : Object.keys(possibleClass).map((item) => (
-            <button
-              onClick={() => {
-                setCurrentClass(item);
-              }}
-            >
-              {item}
-            </button>
-          ))}
-    </div>
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              currentClass={currentClass}
+              setCurrentClass={setCurrentClass}
+            />
+          }
+        />
+        {desafiosRoutes.map((route) => {
+          return (
+            <Route key={route.path} path={route.path} element={route.element} />
+          );
+        })}
+      </Routes>
+    </BrowserRouter>
   );
 }
 

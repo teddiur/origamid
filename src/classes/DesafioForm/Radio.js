@@ -4,9 +4,13 @@ export const Radio = ({ id, options, onChange }) => {
   return (
     <>
       {options.map((option) => (
-        <div>
+        <div key={option}>
           <input
-            style={{ display: "initial", width: "initial" }}
+            style={{
+              display: "initial",
+              width: "initial",
+              fontFamily: "monospace",
+            }}
             type="radio"
             name={id}
             value={option}
