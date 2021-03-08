@@ -70,6 +70,7 @@
 .product-text {
   font-size: 1.4rem;
 }
+
 @keyframes slide-in {
   to {
     opacity: 1;
