@@ -1,6 +1,10 @@
 import React from "react";
-import * as C from "./classes";
 import { Link } from "react-router-dom";
+
+import { useHead } from "./hooks/useHead";
+import * as C from "./classes";
+
+import "./style.css";
 
 export const Home = ({ currentClass, setCurrentClass }) => {
   const possibleClass = {
@@ -22,6 +26,7 @@ export const Home = ({ currentClass, setCurrentClass }) => {
     },
   ];
 
+  useHead();
   return (
     <div>
       {currentClass ? (
@@ -46,8 +51,8 @@ export const Home = ({ currentClass, setCurrentClass }) => {
           <p>Desafios</p>
           {desafiosRoutes.map((route) => {
             return (
-              <Link to={route.path}>
-                <button key={route.path}>{route.label}</button>
+              <Link to={route.path} key={route.path}>
+                <button>{route.label}</button>
               </Link>
             );
           })}

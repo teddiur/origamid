@@ -15,9 +15,9 @@ html {
   --radius: 0.2rem;
 }
 
-body {
+/* body {
   margin: 1.5rem;
-}
+} */
 
 input[type="text"],
 input[type="email"],
